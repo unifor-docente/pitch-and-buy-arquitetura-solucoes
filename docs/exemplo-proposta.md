@@ -78,7 +78,7 @@ Elementos principais:
 - Serviço de notificação
 - Sistema de autenticação
 
-![Diagrama de Contexto - HealthNow](./imgs/diagrama-contexto)
+![Diagrama de Contexto - HealthNow](./imgs/diagrama-contexto.png)
 
 ---
 
@@ -91,7 +91,7 @@ Elementos principais:
 - Serviço de vídeo (terceiro)
 - Mensageria para notificações
 
-![Diagrama de Containers - HealthNow](./imgs/diagrama-containers)
+![Diagrama de Containers - HealthNow](./imgs/diagrama-containers.png)
 
 ---
 
