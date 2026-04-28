@@ -30,4 +30,30 @@ export class TeamsService {
       },
     });
   }
+
+  async findAvailableForVoter(voterId: string) {
+  const voter = await this.prisma.voter.findUnique({
+    where: { id: voterId },
+    include: {
+      votes: true,
+    },
+  });
+
+  if (!voter) {
+    return [];
+  }
+
+  const votedTeamIds = voter.votes.map((vote) => vote.teamId);
+
+  return this.prisma.team.findMany({
+    where: {
+      id: {
+        notIn: [voter.teamId, ...votedTeamIds],
+      },
+    },
+    orderBy: {
+      name: 'asc',
+    },
+  });
+}
 }

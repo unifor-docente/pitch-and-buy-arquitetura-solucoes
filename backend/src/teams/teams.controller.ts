@@ -16,6 +16,11 @@ export class TeamsController {
     return this.teamsService.findAll();
   }
 
+  @Get('available/:voterId')
+  findAvailableForVoter(@Param('voterId') voterId: string) {
+    return this.teamsService.findAvailableForVoter(voterId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.teamsService.findOne(id);
