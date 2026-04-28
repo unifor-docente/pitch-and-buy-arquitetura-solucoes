@@ -1,0 +1,56 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id           String   @id @default(uuid())
+  name         String
+  solutionName String
+  theme        String?
+  createdAt    DateTime @default(now())
+
+  votes        Vote[]
+  voters       Voter[]
+}
+
+model Voter {
+  id        String   @id @default(uuid())
+  name      String
+  teamId    String
+  createdAt DateTime @default(now())
+
+  team      Team     @relation(fields: [teamId], references: [id])
+  votes     Vote[]
+}
+
+model Vote {
+  id               String         @id @default(uuid())
+  teamId           String
+  voterId          String
+  solutionRating   SolutionRating
+  purchaseIntent   PurchaseIntent
+  createdAt        DateTime       @default(now())
+
+  team             Team           @relation(fields: [teamId], references: [id])
+  voter            Voter          @relation(fields: [voterId], references: [id])
+
+  @@unique([teamId, voterId])
+}
+
+enum SolutionRating {
+  LIKE
+  PARTIAL
+  DISLIKE
+}
+
+enum PurchaseIntent {
+  BUY
+  MAYBE
+  NO
+}
