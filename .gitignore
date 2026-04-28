@@ -30,3 +30,6 @@ Thumbs.db
 # Docker
 docker-data/
 postgres-data/
+.env*
+.env.example
+.env.lightsail.example

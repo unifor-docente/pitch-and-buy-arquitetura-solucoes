@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: pitchbuy-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pitchbuy_postgres_data:/var/lib/postgresql/data
+    networks:
+      - pitchbuy-network
+
+  backend:
+    image: ${BACKEND_IMAGE}
+    container_name: pitchbuy-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - "${BACKEND_PORT}:3000"
+    depends_on:
+      - postgres
+    networks:
+      - pitchbuy-network
+
+  frontend:
+    image: ${FRONTEND_IMAGE}
+    container_name: pitchbuy-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      - backend
+    networks:
+      - pitchbuy-network
+
+volumes:
+  pitchbuy_postgres_data:
+
+networks:
+  pitchbuy-network:
+    driver: bridge
