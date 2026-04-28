@@ -793,3 +793,48 @@ button:disabled {
   color: #cbd5e1;
   line-height: 1.5;
 }
+
+.form-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.list-item-with-actions {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.85);
+  color: #cbd5e1;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.icon-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(96, 165, 250, 0.55);
+  color: #fff;
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.icon-button.danger:hover {
+  border-color: rgba(248, 113, 113, 0.65);
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.25);
+}
