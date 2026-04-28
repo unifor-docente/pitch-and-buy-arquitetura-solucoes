@@ -778,3 +778,18 @@ button:disabled {
   background:
     linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(15, 23, 42, 0.82));
 }
+
+.completed-vote-state {
+  display: grid;
+  gap: 12px;
+}
+
+.completed-vote-state strong {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.completed-vote-state span {
+  color: #cbd5e1;
+  line-height: 1.5;
+}

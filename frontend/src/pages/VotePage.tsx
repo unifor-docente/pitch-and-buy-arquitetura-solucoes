@@ -3,6 +3,7 @@ import confetti from 'canvas-confetti';
 import { CheckCircle2, ShoppingCart, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { api } from '../api/http';
 import type { PurchaseIntent, SolutionRating, Team, Voter } from '../types';
+import { Link } from 'react-router-dom';
 
 type VoteForm = {
   solutionRating: SolutionRating | '';
@@ -186,8 +187,16 @@ export function VotePage() {
               ))}
 
               {selectedVoterId && availableTeams.length === 0 && (
-                <div className="empty-state">
-                  Não há mais equipes disponíveis para votação.
+                <div className="empty-state completed-vote-state">
+                    <strong>🎉 Obrigado pela participação!</strong>
+                    <span>
+                    Você já votou em todas as equipes disponíveis. Agora acompanhe o resultado
+                    no ranking final do Pitch & Buy.
+                    </span>
+
+                    <Link to="/ranking" className="secondary-button">
+                    Ver ranking
+                    </Link>
                 </div>
               )}
             </div>
