@@ -245,3 +245,5 @@ O objetivo do **Pitch & Buy** não é encontrar uma arquitetura perfeita.
 O objetivo é demonstrar capacidade de análise, tomada de decisão e argumentação técnica.
 
 Não basta propor uma solução. É preciso justificar por que ela faz sentido.
+
+-- Teste Incluindo Login
